@@ -1,0 +1,66 @@
+{
+    "test": {
+        "fs" : 500,
+        "ab" : 0.05,
+        "filetime": 2,
+        "findevent": 0,
+        "threshold": 5,
+        "direction": -1,
+        "windowbaseline": 5000, 
+        "windowending": 100 
+    },
+    "gapfree": {
+        "Iichannel": "Dev1/ai0",
+        "Vichannel" : "",
+        "Vochannel" : "Dev1/ao0",
+        "fs" : 500,
+        "ab" : 0.05,
+        "filetime": 60,
+        "findevent": 0,
+        "threshold": 5,
+        "direction": -1,
+        "windowbaseline": 5000, 
+        "windowending": 100 
+    },
+    "sweep": {
+        "Iichannel": "Dev1/ai0",
+        "Vichannel" : "",
+        "Vochannel" : "Dev1/ao0",
+        "fs" : 50,
+        "ab" : 0.05,
+        "filetime": 60,
+        "wave": "empty",
+        "amplitude" : 0,
+        "period" : 5,
+        "lagtime": 1,
+        "increment": 100,
+        "maxvoltage":500,
+        "offset" : 0,
+        "v0": -500
+    },
+    "simulate": {
+        "poreradius": 10e-9, 
+        "porelength": 30e-9, 
+        "resistivity": 0.046, 
+        "voltage": -0.1,
+        "radiusx": 3e-9, 
+        "radiusy": 3e-9,
+        "radiusz": 2e-9, 
+        "charge": -5, 
+        "Diffusion_xy": 6e-11, 
+        "Diffusion_r": 10000, 
+        "Dipolement": 500,
+        "samplingrate": 5e5, 
+        "maxtime": 20, 
+        "rms": 50e-12, 
+        "eventfrequency": 2, 
+        "dwelltime": 0.2, 
+        "unit_current": "pA",
+        "findevent": 0,
+        "threshold": 5,
+        "direction": -1,
+        "windowbaseline": 5000, 
+        "windowending": 100 
+    }
+    
+}

@@ -1,0 +1,49 @@
+pydaq
+
+1. the program are writen by python, make sure you already have python with following dependencies:
+    <matplotlib>, <numpy>, <nidaqmx>
+    if you do not have, please run the command seperately in the powershell:
+        pip install numpy 
+        pip install matplotlib
+        pip install nidaqmx 
+
+    if you get some error about the DLL from matplotlib when you run the script:
+        please install a small software "visual C++ redistributable for visual studio 2015" which can be found in google, then you can run the code 
+
+2. This program can read the current, voltage output from the axon amplifier, and apply the voltage to the amplifier. 
+    for read current: connect <SCALED OUTPUT> on the back of axon to the Ni daq card analog input channel <ai0>
+    for read voltage: connect <10 Vm> on the back of axon to the Ni daq card analog input channel <ai1>
+    for apply voltage: connect <EXIT. COMMAND/INPUT/REAR SWITCHED> on the back of axon to the Ni daq card analog onput channel <ao0> 
+
+3. The parameter to control the instrument are in the json file, you can load a new one or edit it by click the menu "Protocol"
+    instrument control
+    "device" : tell the program the ni daq channel name, order should be [read current, read voltage, apply voltage]
+    "Vichannel: 0: disable voltage read channel, 1: enable this channel
+    "Vochannel": 0: disable voltage apply channel, 1: enable this channel
+
+    data acquisition setting
+    "fs": sampling rate, units kHz
+          if your ni daq card have maxmium x khz sampling rate and you need use voltage read channel, the maxmium fs must be smaller than x/2 kHz
+    "ab": the number of "alpha" x "beta" in the axon front panel 
+    "recordvoltage": 0: do not save the voltage channel to data file(.dat) 1: save the voltage channel to data file(.dat2)
+                     if Vichannel is 1 then it will be saved, otherwise Vochannel will be saved
+    "totaltime": total running time for the recording, units s. 0 means recording continuously
+    "filetime": In the recording, max time for one single file, it will create a new file then 
+    "mode": "gapfree": record and play data free mode. "sweep": record and play data with a repeat and period time 
+    
+    below parameter only be used for sweep mode
+    "wave": "empty", "sin", "triangle", "sawtooth". scaled function e.g. y->(-1, 1) = sin(x->(0 , 1))
+    "period": period time of each sweep units second. 
+    "lagtime": units second. add 0 voltage with lagtime at the begin of one period time. it is included in the period time 
+    "increment": every sweep plus this number with present voltage. units mV 
+    "maxvoltage": the maxmium voltage could be reached. units mV
+    "v0": the begin voltage. units mV
+    "amplitude": the amplitude for the wave. units mV
+    "offset": preserve for calibrate the apply voltage and actual voltage 
+    
+tips:
+    1. there is a text box after select button at the ui, this meas the frame rate of the plotting. if this number > 20 ms all the time, you will get some error later, the data acquisition will not continuously 
+    2. filter only be used for data display
+    
+    
+

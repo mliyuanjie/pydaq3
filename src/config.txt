@@ -1,0 +1,6 @@
+fs 500
+filter 50
+resolution 500
+window 20
+k -1
+sigma 5
